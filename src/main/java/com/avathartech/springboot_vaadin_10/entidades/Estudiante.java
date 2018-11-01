@@ -8,7 +8,6 @@ import javax.persistence.Id;
 public class Estudiante {
 
     @Id
-    @GeneratedValue
     Integer matricula;
     String nombre;
 

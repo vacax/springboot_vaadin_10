@@ -2,11 +2,14 @@ package com.avathartech.springboot_vaadin_10;
 
 import com.avathartech.springboot_vaadin_10.casos.basico.HolaMundoVaadin;
 import com.avathartech.springboot_vaadin_10.casos.binder.EjemploBinder;
+import com.avathartech.springboot_vaadin_10.casos.crud.EjemploCrud;
 import com.avathartech.springboot_vaadin_10.casos.grid.EjemploGrid;
 import com.avathartech.springboot_vaadin_10.casos.urls.CambiadoTituloPaginaDinamico;
 import com.avathartech.springboot_vaadin_10.casos.urls.ConocerURL;
 import com.avathartech.springboot_vaadin_10.casos.urls.ListarRutas;
+import com.avathartech.springboot_vaadin_10.entidades.Estudiante;
 import com.avathartech.springboot_vaadin_10.servicios.EstudianteRepository;
+import com.avathartech.springboot_vaadin_10.servicios.EstudianteService;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
@@ -20,6 +23,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 public class SpringbootVaadin10Application extends SpringBootServletInitializer {
@@ -36,7 +42,7 @@ public class SpringbootVaadin10Application extends SpringBootServletInitializer 
 
 
 
-        public MiView(@Autowired EstudianteRepository estudianteRepository){
+        public MiView(){
             add(new Button("Presionar", new ComponentEventListener<ClickEvent<Button>>() {
                 @Override
                 public void onComponentEvent(ClickEvent<Button> event) {
@@ -46,9 +52,6 @@ public class SpringbootVaadin10Application extends SpringBootServletInitializer 
 
             //creando rutas.
             crearRutas();
-
-            //
-            estudianteRepository.findAll();
         }
 
         /**
@@ -64,7 +67,23 @@ public class SpringbootVaadin10Application extends SpringBootServletInitializer 
             caja.add(new RouterLink("Ejemplo de Binder", EjemploBinder.class));
             caja.add(new RouterLink("Cambiar Titulo de Forma Dinámica", CambiadoTituloPaginaDinamico.class));
             caja.add(new RouterLink("Listar todas las rutas", ListarRutas.class));
+            caja.add(new RouterLink("CRUD", EjemploCrud.class));
             add(caja);
+        }
+    }
+
+    @Component
+    static class BootStrap{
+        @Autowired
+        EstudianteService estudianteService;
+
+        @PostConstruct
+        public void init(){
+            System.out.println("Creando los estudiantes de prueba");
+            //datos de pruebas
+            for(int i = 0; i<=10000;i++){
+                estudianteService.crearEstudiante(new Estudiante(i, "Estudiante "+i));
+            }
         }
     }
 }

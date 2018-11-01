@@ -52,7 +52,7 @@ public class EjemploGrid extends VerticalLayout {
         //Campo complejo.
         tabla.addColumn(new ComponentRenderer<>(person -> {
 
-            // text field for entering a new name for the person
+            // 
             TextField name = new TextField("Nombre");
             name.setValue(person.getNombre());
 
@@ -64,9 +64,7 @@ public class EjemploGrid extends VerticalLayout {
 
             // button that removes the item
             Button remove = new Button("Remover", event -> {
-                /*ListDataProvider<Estudiante> dataProvider = (ListDataProvider<Estudiante>) tabla.getDataProvider();
-                dataProvider.getItems().remove(person);
-                dataProvider.refreshAll();*/
+               //....
             });
 
             // layouts for placing the text field on top of the buttons
@@ -75,14 +73,11 @@ public class EjemploGrid extends VerticalLayout {
         })).setHeader("Actions");
 
         //evento de selección.
-        tabla.addSelectionListener(new SelectionListener<Grid<Estudiante>, Estudiante>() {
-            @Override
-            public void selectionChange(SelectionEvent<Grid<Estudiante>, Estudiante> event) {
-                if(event.getFirstSelectedItem().isPresent()) {
-                    System.out.println("Seleccionando el estudiante: " + event.getFirstSelectedItem().get().getNombre());
-                } else{
-                    System.out.println("No tengo nada seleccionado....");
-                }
+        tabla.addSelectionListener((SelectionListener<Grid<Estudiante>, Estudiante>) event -> {
+            if(event.getFirstSelectedItem().isPresent()) {
+                System.out.println("Seleccionando el estudiante: " + event.getFirstSelectedItem().get().getNombre());
+            } else{
+                System.out.println("No tengo nada seleccionado....");
             }
         });
 
