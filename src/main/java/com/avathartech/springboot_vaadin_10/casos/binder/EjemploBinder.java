@@ -47,11 +47,8 @@ public class EjemploBinder extends VerticalLayout {
             }
         });
 
-        cancelar = new Button("Cancelar", new ComponentEventListener<ClickEvent<Button>>() {
-            @Override
-            public void onComponentEvent(ClickEvent<Button> event) {
-                Notification.show("Presionando el botón: "+event.getSource().getText());
-            }
+        cancelar = new Button("Cancelar",  event -> {
+            Notification.show("Presionando el botón: "+event.getSource().getText());
         });
 
         //Aplicando el binder
@@ -76,9 +73,9 @@ public class EjemploBinder extends VerticalLayout {
                 .bind(EjemploGrid.Estudiante::getCorreo, EjemploGrid.Estudiante::setCorreo);
 
         //trabajando con la conversión por defecto.
-        binder.forField(matriculaField)
+        /*binder.forField(matriculaField)
                 .withConverter(new StringToIntegerConverter("Debe ser entero"))
-                .bind(EjemploGrid.Estudiante::getMatricula, EjemploGrid.Estudiante::setMatricula);
+                .bind(EjemploGrid.Estudiante::getMatricula, EjemploGrid.Estudiante::setMatricula);*/
 
         //trabajando con la conversión propia.
         binder.forField(matriculaField)

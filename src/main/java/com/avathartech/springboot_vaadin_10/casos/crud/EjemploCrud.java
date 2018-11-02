@@ -72,6 +72,8 @@ public class EjemploCrud extends VerticalLayout {
         tablaEstudiante.addColumn(Estudiante::getNombre).setHeader("Nombre");
         tablaEstudiante.addColumn(new NativeButtonRenderer<Estudiante>("Elminiar", e->{
             Notification.show("Eliminando el registro: "+e.getMatricula());
+            estudianteService.borrarEstudiante(e);
+            dataProvider.refreshAll();
         })).setHeader("Acciones");
 
         //evento de la tabla
