@@ -4,16 +4,15 @@ import com.avathartech.springboot_vaadin_10.casos.basico.HolaMundoVaadin;
 import com.avathartech.springboot_vaadin_10.casos.binder.EjemploBinder;
 import com.avathartech.springboot_vaadin_10.casos.crud.EjemploCrud;
 import com.avathartech.springboot_vaadin_10.casos.grid.EjemploGrid;
+import com.avathartech.springboot_vaadin_10.casos.layouts.Vista1Layout;
 import com.avathartech.springboot_vaadin_10.casos.urls.CambiadoTituloPaginaDinamico;
-import com.avathartech.springboot_vaadin_10.casos.urls.ConocerURL;
+import com.avathartech.springboot_vaadin_10.casos.parametros.ConocerURL;
 import com.avathartech.springboot_vaadin_10.casos.urls.ListarRutas;
 import com.avathartech.springboot_vaadin_10.entidades.Estudiante;
-import com.avathartech.springboot_vaadin_10.servicios.EstudianteRepository;
 import com.avathartech.springboot_vaadin_10.servicios.EstudianteService;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -68,6 +67,7 @@ public class SpringbootVaadin10Application extends SpringBootServletInitializer 
             caja.add(new RouterLink("Cambiar Titulo de Forma Dinámica", CambiadoTituloPaginaDinamico.class));
             caja.add(new RouterLink("Listar todas las rutas", ListarRutas.class));
             caja.add(new RouterLink("CRUD", EjemploCrud.class));
+            caja.add(new RouterLink("Ejemplo de Layout", Vista1Layout.class));
             add(caja);
         }
     }

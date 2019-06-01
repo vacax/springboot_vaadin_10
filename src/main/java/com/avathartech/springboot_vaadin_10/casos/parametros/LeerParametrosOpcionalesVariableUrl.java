@@ -6,8 +6,8 @@ import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.OptionalParameter;
 import com.vaadin.flow.router.Route;
 
-@Route("c")
-public class LeerParametrosOpcionales extends Div  implements HasUrlParameter<String> {
+@Route("leer-parametros-opcionales")
+public class LeerParametrosOpcionalesVariableUrl extends Div  implements HasUrlParameter<String> {
 
     /**
      * Para marcar el parametro opcional debo indicar la anotación

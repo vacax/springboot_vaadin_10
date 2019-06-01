@@ -7,7 +7,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.WildcardParameter;
 
 @Route("leer-mas-parametros")
-public class LeerMasParametros extends Div implements HasUrlParameter<String> {
+public class LeerMasParametrosVariableUrl extends Div implements HasUrlParameter<String> {
 
     /**
      * La forma de poder leer más de un parametros:

@@ -6,9 +6,9 @@ import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.Route;
 
 @Route("leer-parametros")
-public class LeerParametros extends Div implements HasUrlParameter<String> {
+public class LeerParametrosVariableUrl extends Div implements HasUrlParameter<String> {
 
-    public LeerParametros() {
+    public LeerParametrosVariableUrl() {
         
     }
 
